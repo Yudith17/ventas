@@ -1,0 +1,379 @@
+<div class="container-fluid m-0 p-3 mt-4 row">
+                <div id="categoria" class="col-12 row m-0 container-fluid p-0">
+                    <div id="imagenes_productos" class="col-2 row m-0">
+                        <div id="imagen_principal" class="col-12 p-2" style="background: rgb(241, 239, 240); height: 700px;">
+                            <div class="container mt-5">
+                                <div class="filters">
+                                  <h5>Filtros</h5>
+                                  
+                                  
+                                  <div class="filter-section" id="filter-category">
+                                    <h6 data-toggle="collapse" data-target="#category-options">Categoría</h6>
+                                    <div id="category-options" class="collapse show">
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="category" id="plus-size" value="plus-size">
+                                        <label class="form-check-label" for="plus-size">Ropa de Mujer Plus</label>
+                                      </div>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="category" id="women-clothing" value="women-clothing">
+                                        <label class="form-check-label" for="women-clothing">Ropa de Mujer</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  
+                                  
+                                  <div class="filter-section" id="filter-size">
+                                    <h6 data-toggle="collapse" data-target="#size-options">Talla</h6>
+                                    <div id="size-options" class="collapse show">
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="universal-size" value="universal-size">
+                                        <label class="form-check-label" for="universal-size">Unitalla</label>
+                                      </div>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="xxs-size" value="xxs-size">
+                                        <label class="form-check-label" for="xxs-size">XXS</label>
+                                      </div>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="xs-size" value="xs-size">
+                                        <label class="form-check-label" for="xs-size">XS</label>
+                                      </div>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="s-size" value="s-size">
+                                        <label class="form-check-label" for="s-size">S</label>
+                                      </div>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="m-size" value="m-size">
+                                        <label class="form-check-label" for="m-size">M</label>
+                                      </div>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="l-size" value="l-size">
+                                        <label class="form-check-label" for="l-size">L</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  
+                               
+                                  <div class="filter-section" id="filter-color">
+                                    <h6 data-toggle="collapse" data-target="#color-options">Color</h6>
+                                    <div id="color-options" class="collapse show">
+                                      <div class="row">
+                                        <div class="color-option" style="background-color: #90f3da;border-radius: 50px; width: 30px; height: 30px; margin:0 8px 5px 8px;"></div>
+                                        <div class="color-option" style="background-color: #a11129;border-radius: 50px; width: 30px; height: 30px;margin: 0 8px 5px 8px;"></div>
+                                        <div class="color-option" style="background-color: #520ef0;border-radius: 50px; width: 30px; height: 30px;margin: 0 8px 5px 8px;"></div>
+                                        <div class="color-option" style="background-color: #e2b887;border-radius: 50px; width: 30px; height: 30px;margin: 0 8px 5px 8px;"></div>
+                                        <div class="color-option" style="background-color: #b0a760;border-radius: 50px; width: 30px; height: 30px;margin: 0 8px 5px 8px;"></div>
+                                        <div class="color-option" style="background-color: #ff5757;border-radius: 50px; width: 30px; height: 30px;margin: 0 8px 5px 8px;"></div>
+                                        <div class="color-option" style="background-color: #ffaa00;border-radius: 50px; width: 30px; height: 30px;margin: 0 8px 5px 8px;"></div>
+                                        <div class="color-option" style="background-color: #55aa55;border-radius: 50px; width: 30px; height: 30px;margin: 0 8px 5px 8px;"></div>
+                                        <div class="color-option" style="background-color: #ff00ff;border-radius: 50px; width: 30px; height: 30px;margin: 0 8px 5px 8px;"></div>
+                                        <div class="color-option" style="background-color: #55ffff;border-radius: 50px; width: 30px; height: 30px;margin: 0 8px 5px 8px;"></div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  
+                                 
+                                  <div class="filter-section" id="filter-material">
+                                    <h6 data-toggle="collapse" data-target="#material-options">Material</h6>
+                                    <div id="material-options" class="collapse show">
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="polyester" value="polyester">
+                                        <label class="form-check-label" for="polyester">Poliéster</label>
+                                      </div>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="polyurethane" value="polyurethane">
+                                        <label class="form-check-label" for="polyurethane">Poliuretano</label>
+                                      </div>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="corduroy" value="corduroy">
+                                        <label class="form-check-label" for="corduroy">Pana</label>
+                                      </div>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="satin" value="satin">
+                                        <label class="form-check-label" for="satin">Satén</label>
+                                      </div>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="velvet" value="velvet">
+                                        <label class="form-check-label" for="velvet">Terciopelo</label>
+                                      </div>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="silk" value="silk">
+                                        <label class="form-check-label" for="silk">Seda</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  
+                                </div>
+                              </div>
+                              
+                              <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+                              <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+                              <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                        </div>
+                      
+                    </div>
+                    <div id="detalles" class="col-10 p-2" style="background: rgb(241, 239, 240); height: 1000px; margin-top: 20px; overflow:scroll;">
+                        <div class="container-fluid m-0 p-3 mt-4 row">
+                            <div class="col-lg-3 col-md-4 col-sm-6 p-2">
+                                <div class="card ">
+                                <img src="https://img.ltwebstatic.com/images3_pi/2023/08/30/7f/1693365331804df1f14d4cd5861cce59892b78fe07_thumbnail_336x.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Abrigo Felpa</h5>
+                                  <p class="card-text"> Nuevo Abrigo de Felpa de Otoño e Invierno Para Mujer es Simple, calido Y de Moda</p>
+                                  <div class="text-center">
+                                  <a href="<?php echo BASE_URL?>detallecarrito" class="btn btn-primary">Ver Detalles</a>
+                                  <a href="<?php echo BASE_URL?>carrito" class="btn btn-success">Añadir a Carrito</a>
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6 p-2">
+                                <div class="card ">
+                                <img src="https://img.ltwebstatic.com/images3_pi/2023/11/27/4b/17010674094efa69f472086d6071d1027443bcbd1b_thumbnail_720x.webp" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Abrigo de lana</h5>
+                                  <p class="card-text"> Abrigo color rojo de lana con doble bordadura cuello vuelto de talla grande</p>
+                                  <div class="text-center">
+                                  <a href="<?php echo BASE_URL?>detallecarrito" class="btn btn-primary">Ver Detalles</a>
+                                  <a href="<?php echo BASE_URL?>carrito" class="btn btn-success">Añadir a Carrito</a>
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6 p-2">
+                                <div class="card ">
+                                <img src="https://img.ltwebstatic.com/images3_pi/2021/09/24/16324526737e5b73f8a9094719728e36bd2964dc3e_thumbnail_720x.webp" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Abrigo Simil</h5>
+                                  <p class="card-text">Abrigos de pieles similares para mujer bolsillo liso glamour color rosado bebe </p>
+                                  <div class="text-center">
+                                  <a href="<?php echo BASE_URL?>detallecarrito" class="btn btn-primary">Ver Detalles</a>
+                                  <a href="<?php echo BASE_URL?>carrito" class="btn btn-success">Añadir a Carrito</a>
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6 p-2">
+                                <div class="card ">
+                                <img src="https://img.ltwebstatic.com/images3_pi/2023/09/22/5d/16953475595ba38167fa655b676342196bfaec6bf3_thumbnail_720x.webp" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Abrigo chaleco</h5>
+                                  <p class="card-text">Abrigos tipo chaleco acolchonado con bolsillos con solapa termica color negro</p>
+                                  <div class="text-center">
+                                  <a href="<?php echo BASE_URL?>detallecarrito" class="btn btn-primary">Ver Detalles</a>
+                                  <a href="<?php echo BASE_URL?>carrito" class="btn btn-success">Añadir a Carrito</a>
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6 p-2">
+                                <div class="card ">
+                                <img src="https://img.ltwebstatic.com/images3_pi/2024/06/17/44/1718607273ad0aeb15c423b0d231825764a03af4d7_thumbnail_336x.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Chaqueta</h5>
+                                  <p class="card-text">Chaquetas con capucha casual de manga larga con cintura ajustable con cordon para mujer</p>
+                                  <div class="text-center">
+                                  <a href="<?php echo BASE_URL?>detallecarrito" class="btn btn-primary">Ver Detalles</a>
+                                  <a href="<?php echo BASE_URL?>carrito" class="btn btn-success">Añadir a Carrito</a>
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6 p-2">
+                                <div class="card ">
+                                <img src="https://img.ltwebstatic.com/images3_pi/2024/01/17/1d/17054572720d46ea2a807246d684d4b0c24e3da1d9_thumbnail_720x.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Essnce </h5>
+                                  <p class="card-text">Nuevo abrigo de invierno para mujeres con ajuste regular minimalista, calido y de moda.</p>
+                                  <div class="text-center">
+                                  <a href="<?php echo BASE_URL?>detallecarrito" class="btn btn-primary">Ver Detalles</a>
+                                  <a href="<?php echo BASE_URL?>carrito" class="btn btn-success">Añadir a Carrito</a>
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6 p-2">
+                                <div class="card ">
+                                <img src="https://img.ltwebstatic.com/images3_pi/2022/10/27/16668391085cd7ea79c5a8c1e24565563755233c23_thumbnail_405x552.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Lune</h5>
+                                  <p class="card-text">Abrigo parka de cintura con cordon ribete lanudo con capucha de color negro para damas.</p>
+                                  <div class="text-center">
+                                  <a href="<?php echo BASE_URL?>detallecarrito" class="btn btn-primary">Ver Detalles</a>
+                                  <a href="<?php echo BASE_URL?>carrito" class="btn btn-success">Añadir a Carrito</a>
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6 p-2">
+                                <div class="card ">
+                                <img src="https://img.ltwebstatic.com/images3_pi/2023/09/05/de/1693880053e9d159a48cbfc393b5ce91e35af23abd_thumbnail_336x.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Abrigos</h5>
+                                  <p class="card-text"> abrigo de color marron es tipo chaleco larga con diseños en la basta tiene abertura.</p>
+                                  <div class="text-center">
+                                  <a href="<?php echo BASE_URL?>detallecarrito" class="btn btn-primary">Ver Detalles</a>
+                                  <a href="<?php echo BASE_URL?>carrito" class="btn btn-success">Añadir a Carrito</a>
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6 p-2">
+                                <div class="card ">
+                                <img src="https://img.ltwebstatic.com/images3_pi/2020/10/14/16026559507f9071689dd0e00b8915b7d7760e01f9_thumbnail_336x.webp" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Abrigo lana</h5>
+                                  <p class="card-text">Abrigo solido de hombro calido con botones y dos bolsillos en el pecho </p>
+                                  <div class="text-center">
+                                  <a href="<?php echo BASE_URL?>detallecarrito" class="btn btn-primary">Ver Detalles</a>
+                                  <a href="<?php echo BASE_URL?>carrito" class="btn btn-success">Añadir a Carrito</a>
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6 p-2">
+                                <div class="card ">
+                                <img src="https://img.ltwebstatic.com/images3_pi/2023/10/25/e0/169821478814524721fb6e908f21cb349e57cd275b_thumbnail_720x.webp" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Abrigo lune</h5>
+                                  <p class="card-text">LUNE Abrigo Acolchado largas hasta la rodilla Con Capucha Para Mujer</p>
+                                  <div class="text-center">
+                                  <a href="<?php echo BASE_URL?>detallecarrito" class="btn btn-primary">Ver Detalles</a>
+                                  <a href="<?php echo BASE_URL?>carrito" class="btn btn-success">Añadir a Carrito</a>
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6 p-2">
+                                <div class="card ">
+                                <img src="https://img.ltwebstatic.com/images3_pi/2022/10/18/16660574515f04eaa741e338424782933c3583b68c_thumbnail_336x.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Prive</h5>
+                                  <p class="card-text">Privé Abrigo de cascada cuello con botones,manga acolchonadas</p>
+                                  <div class="text-center">
+                                  <a href="<?php echo BASE_URL?>detallecarrito" class="btn btn-primary">Ver Detalles</a>
+                                  <a href="<?php echo BASE_URL?>carrito" class="btn btn-success">Añadir a Carrito</a>
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6 p-2">
+                                <div class="card ">
+                                <img src="https://img.ltwebstatic.com/images3_pi/2023/10/13/e6/1697168213128cc8caf2044ad7e39dbddacae3394d_thumbnail_405x552.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">clasi</h5>
+                                  <p class="card-text">Clasi Abrigo cuello de borreguito de doble botonadura
+                                  </p>
+                                  <div class="text-center">
+                                  <a href="<?php echo BASE_URL?>detallecarrito" class="btn btn-primary">Ver Detalles</a>
+                                  <a href="<?php echo BASE_URL?>carrito" class="btn btn-success">Añadir a Carrito</a>
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6 p-2">
+                                <div class="card ">
+                                <img src="https://img.ltwebstatic.com/images3_pi/2022/11/26/16694333252258aae25762382885dc7a0ff5cbba6f_thumbnail_720x.webp" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Prive abrigo</h5>
+                                  <p class="card-text">Privé Abrigo cuello de borreguito en forma v de doble botonadura largas hasta las rodillas</p>
+                                  <div class="text-center">
+                                  <a href="<?php echo BASE_URL?>detallecarrito" class="btn btn-primary">Ver Detalles</a>
+                                  <a href="<?php echo BASE_URL?>carrito" class="btn btn-success">Añadir a Carrito</a>
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6 p-2">
+                                <div class="card ">
+                                <img src="https://img.ltwebstatic.com/images3_pi/2024/01/29/ef/170651886481c6b5506aca8d08abd2dbfcea9ba3d3_thumbnail_336x.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Blazer</h5>
+                                  <p class="card-text">manga larga con cuello con muescas, chaqueta Lisa elegante con 
+                                    bolsillo frontal abierto.</p>
+                                  <div class="text-center">
+                                  <a href="<?php echo BASE_URL?>detallecarrito" class="btn btn-primary">Ver Detalles</a>
+                                  <a href="<?php echo BASE_URL?>carrito" class="btn btn-success">Añadir a Carrito</a>
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6 p-2">
+                                <div class="card ">
+                                <img src="https://img.ltwebstatic.com/images3_pi/2023/09/27/60/1695819414b939b96237bb178a8e0ece4e20f50fe6_thumbnail_720x_wk_shein.webp" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Essnce</h5>
+                                  <p class="card-text"> Essnce Talla grande Abrigo de cuello con solapa de doble botonadura lizo y elegante de mujer </p>
+                                  <div class="text-center">
+                                  <a href="<?php echo BASE_URL?>detallecarrito" class="btn btn-primary">Ver Detalles</a>
+                                  <a href="<?php echo BASE_URL?>carrito" class="btn btn-success">Añadir a Carrito</a>
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6 p-2">
+                                <div class="card ">
+                                <img src="https://img.ltwebstatic.com/images3_pi/2023/09/01/5b/169358304206fca3b2bf22437aef62e1d636326f4b_thumbnail_720x.webp" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Abrigos</h5>
+                                  <p class="card-text">Abrigo acolchado con cremallera con capucha de color beish para el invierno para damas.</p>
+                                  <div class="text-center">
+                                  <a href="<?php echo BASE_URL?>detallecarrito" class="btn btn-primary">Ver Detalles</a>
+                                  <a href="<?php echo BASE_URL?>carrito" class="btn btn-success">Añadir a Carrito</a>
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6 p-2">
+                                <div class="card ">
+                                <img src="https://img.ltwebstatic.com/images3_pi/2021/08/25/1629890599c6976ac95f5e54aa8d9e872759b1bfd9.webp" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Embudo</h5>
+                                  <p class="card-text">Embudo cuello con cremallera delantera corto Abrigo acolchado Negro casaca crop top.</p>
+                                  <div class="text-center">
+                                  <a href="<?php echo BASE_URL?>detallecarrito" class="btn btn-primary">Ver Detalles</a>
+                                  <a href="<?php echo BASE_URL?>carrito" class="btn btn-success">Añadir a Carrito</a>
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6 p-2">
+                                <div class="card ">
+                                <img src="https://img.ltwebstatic.com/images3_pi/2023/12/14/55/170253282754d65d5853da93108ea9af09784f2272_thumbnail_336x.webp" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Lune</h5>
+                                  <p class="card-text">LUNE Chaqueta 2 En 1 Con Capucha Y Cordón Ajustable Con Dos Bolsillos muy bonito para damas</p>
+                                  <div class="text-center">
+                                  <a href="<?php echo BASE_URL?>detallecarrito" class="btn btn-primary">Ver Detalles</a>
+                                  <a href="<?php echo BASE_URL?>carrito" class="btn btn-success">Añadir a Carrito</a>
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6 p-2">
+                                <div class="card ">
+                                <img src="https://img.ltwebstatic.com/images3_pi/2023/11/21/7e/1700539305b102c2c277de7faf54d0a363acffb28b_thumbnail_336x.webp" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Classi</h5>
+                                  <p class="card-text">Clasi Abrigo Largo De Lana Con Cuello De Solapa En Punta Y Botones Cruzados largas de la rodilla mas abajo</p>
+                                  <div class="text-center">
+                                  <a href="<?php echo BASE_URL?>detallecarrito" class="btn btn-primary">Ver Detalles</a>
+                                  <a href="<?php echo BASE_URL?>carrito" class="btn btn-success">Añadir a Carrito</a>
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6 p-2">
+                                <div class="card ">
+                                <img src="https://img.ltwebstatic.com/images3_pi/2021/11/03/16359034390f44fe49e715064573d8501f8f5af0b4_thumbnail_720x.webp" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Abrigo rosa</h5>
+                                  <p class="card-text"> Abrigo acolchado con bolsillo ribete de peluche con capucha largas con 2 bolsillos</p>
+                                  <div class="text-center">
+                                  <a href="<?php echo BASE_URL?>detallecarrito" class="btn btn-primary">Ver Detalles</a>
+                                  <a href="<?php echo BASE_URL?>carrito" class="btn btn-success">Añadir a Carrito</a>
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                </div>
+            </div>

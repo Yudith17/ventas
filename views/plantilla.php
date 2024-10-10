@@ -1,13 +1,14 @@
 <?php
 
+require_once "./config/config.php";
 require_once "./controller/vistas_control.php";
 
 $mostrar = new vistasControlador();
 
-$vista = $mostar->ObtenerVistaControlador();
+$vista = $mostrar-> ObtenerVistaControlador();
 
-if ($vista=="login" || $vista=="404") {
-    require_once ".views/".$vista.".php";
+if ($vista==="login" || $vista=="404") {
+    require_once "./views/".$vista.".php";
 
 }else {
     include "./views/include/header.php";

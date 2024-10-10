@@ -8,7 +8,7 @@ class vistasControlador extends vistaModelo{
     }
 
     public function ObtenerVistaControlador(){
-        if ($_GET ['views']) {
+        if ( isset($_GET['views'])) {
             $ruta = explode("/",$_GET ['views']);
             $respuesta = vistaModelo::obtener_vista($ruta[0]);
         }else {

@@ -1,4 +1,26 @@
-<div id="footer" class="col-12" style="background: rgb(252, 252, 252); height: 100px;">
+<div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-4 d-flex align-items-center justify-content-center">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQB1_jysZfpfDHgI2LNBrNU5G44RevXGX-msA&s" style="max-width: 100%; height: auto;" alt="Imagen">
+                </div>
+                <div class="col-md-4 text-center">
+                    <p style="text-align: center; font-size: 70px; font-weight: bold;">NOSOTROS</p>
+                    <p style="text-align: center;">Hacemos ropa única inspirada en lo retro - vintage para las almas rebeldes, que buscan marcar la diferencia 
+                        con su estilo. All rebel souls are welcome.
+                    </p>
+                    <p style="text-align: center; font-size: 20px ;">Nuestra Historia<br>
+
+                    <p style="text-align: center;">En el 2012, inspirados en la estética vintage y el movimiento musical y cultural indie/alternativo, nace una marca peruana y
+                     sostenible con una propuesta diferente que busca vestir a una generación joven, independiente e inconforme con lo establecido 
+                        para hacerlos sentir únicos y libres.
+                    </p>
+                <br><br><br>
+                </div>
+                <div class="col-md-4">
+                </div>
+            </div>
+        </div>
+        <div id="footer" class="col-12" style="background: rgb(252, 252, 252); height: 100px;">
           <div class="container-fluid">
             <div class="row bg-dark text-white py-3">
               <div class="col-4">
@@ -62,7 +84,4 @@
             </div>
           </div>
         </div>
-        
-</body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</html>
+      </div>
