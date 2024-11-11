@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href= "<?php echo BASE_URL?> views/plantilla">
     <link rel="stylesheet" href= "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script>
+      const base_url='<?php echo BASE_URL;?>';
+    </script>
 </head>
 <body>
     <div class="container-fluid p-0">
@@ -24,7 +26,7 @@
                           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGTy6B8GY5_eJcrADDXfpvcFuZvflum5DGbA&s" style="width: 30px;" alt="" class="profile-pic">
                       </div>
                       <div class="col-auto ">
-                        <a href="<?php echo BASE_URL?>detalle_carrito">>
+                        <a href="<?php echo BASE_URL?> detalle_carrito">
                           <img src="https://static.vecteezy.com/system/resources/previews/015/018/215/non_2x/shopping-cart-icon-cartoon-style-vector.jpg" style="width: 30px;" alt="carrito.html">
                         </a>                         
                       </div>
@@ -35,8 +37,8 @@
                           <img src="https://cdn-icons-png.flaticon.com/512/6073/6073873.png " style="width: 30px;" alt="Profile Picture" class="profile-pic">
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink row justify-content-end" style="width: 30px; margin-left: 1350px;">
-                          <a class="dropdown-item" href="<?php echo BASE_URL?>login">Iniciar Sesión</a>
-                          <a class="dropdown-item" href="<?php echo BASE_URL?>usuario ">Usuario</a>
+                          <a class="dropdown-item" href="<?php echo BASE_URL?>login">Iniciar Sesión </a>
+                          <a class="dropdown-item" href="<?php echo BASE_URL?>usuario ">Usuario </a>
                         </div>
                       </div>
                   </div>
