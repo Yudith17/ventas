@@ -9,6 +9,12 @@ class CategoriaModel{
         $this->conexion =new Conexion();
         $this->conexion =$this->conexion->connect();
     }
+    public function insertarCategoria( $nombre, $detalle, ){
+       $sql=$this->conexion->query("CALL insertarCategoria( '{$nombre}', 
+       '{$detalle}')");
+        $sql  = $sql->fetch_object();
+        return $sql;
+    }
 
     public function Obtener_categorias(){
         $arrRespuesta = array();
