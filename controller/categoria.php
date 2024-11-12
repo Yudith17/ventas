@@ -1,31 +1,56 @@
-<?php
-require_once('../model/categoriaModel.php');
-$tipo=$_REQUEST['tipo'];
+<?php 
+require_once('../model/categoriaModel.php');  // Incluir el modelo de categoría
+$tipo = $_REQUEST['tipo'];
 
-//instanciar la clase categoria model
+
 $objCategoria = new CategoriaModel();
 
-if ($tipo=="listar"){
-//respuesta
-    $arr_respuesta = array('status'=>false,'contenido'=>'');
-    $arr_categorias =  $objCategoria->obtener_categorias();
+if ($tipo == "registrarCategoria") {
 
-    if (!empty($arr_categorias)) {
-        //recorremos el arraypsrs sgregar las opciones de las categorias
-        for ($i=0; $i < count($arr_categorias); $i++) { 
-            $id_categoria = $arr_categorias[$i]->id;
-            $categoria = $arr_categorias[$i]->nombre;
-            $opciones ='';
-            $arr_categorias[$i]->options = $opciones;
+    
+    if ($_POST) {
+        $nombreCategoria = $_POST['nombre'];  
+        $detalleCategoria = $_POST['detalle'];  
+
+        
+        if ($nombreCategoria == "" || $detalleCategoria == "") {
+            
+            $arr_respuesta = array('status' => false, 'mensaje' => 'Error, campos vacíos');
+        } else {
+            
+            $arrCategoria = $objCategoria->registrarCategoria($nombreCategoria, $detalleCategoria);
+
+            if ($arrCategoria->id > 0) {
+                
+                $arr_Respuesta = array('status' => true, 'mensaje' => 'Categoría registrada exitosamente');
+            } else {
+                
+                $arr_Respuesta = array('status' => false, 'mensaje' => 'Error al registrar categoría');
+            }
+
+            
+            echo json_encode($arr_Respuesta);
         }
-        $arr_respuesta ['status']=true;
-        $arr_respuesta ['contenido']= $arr_categorias;
     }
-        //$arr_respuesta['contenido']=$arr_categorias;
-      echo json_encode($arr_respuesta);
 }
 
 
+if ($tipo == "listar") {
+    
+}
+
+if ($tipo == "ver") {
+    
+}
+
+if ($tipo == "actualizar") {
+    
+}
+
+if ($tipo == "eliminar") {
+    
+}
 ?>
+
 
 
