@@ -31,6 +31,11 @@ class PersonaModel {
         
         return $persona;
     }
+    public function obtener_Persona($id){
+        $respuesta = $this->conexion->query("SELECT * FROM persona WHERE id='{$id}'");
+        $objeto = $respuesta->fetch_object();
+        return $objeto;
+     }
 
   
     public function actualizarPersona($id, $razon_social, $telefono, $correo, $direccion, $rol, $estado) {
@@ -44,5 +49,12 @@ class PersonaModel {
 
         return $success;
     }
+    public function buscarPersonaPorDNI($dni){
+        $sql = $this->conexion->query("SELECT * FROM persona WHERE nro_identidad='{$dni}'");
+        $sql = $sql->fetch_object();
+        return $sql;
+    }
+
+    
 }
 ?>

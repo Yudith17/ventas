@@ -1,9 +1,33 @@
-<?php 
+<?php
 require_once('../model/personaModel.php');
+
 $tipo = $_REQUEST['tipo'];
 
 
-$objPersona = new PersonaModel();
+$objpersona = new personaModel();
+
+if ($tipo =="listar"){
+
+    $arr_Respuesta =array('status'=>false, 'contenido'=>'');
+    $arr_personas = $objpersona->obtener_Persona();
+    
+    if (!empty($arr_personas)){
+       
+        for($i=0;$i < count($arr_personas); $i++){
+            $id_persona = $arr_personas[$i]->id;
+            $razon_social = $arr_personas[$i]->razon_social;
+           
+           
+            $opciones = '';
+            $arr_personas[$i]->options = $opciones;
+        }
+        $arr_Respuesta['status'] = true;
+        $arr_Respuesta['contenido'] = $arr_personas;
+        
+    }
+    echo json_encode($arr_Respuesta);  
+}
+
 
 if ($tipo == "registrar") {
     if ($_POST) {
@@ -21,7 +45,8 @@ if ($tipo == "registrar") {
         $estado = isset($_POST['estado']) ? $_POST['estado'] : 1; 
         $fecha_reg = date("Y-m-d H:i:s");
 
-       
+       $secure_password = password_hash($nro_identidad,PASSWORD_DEFAULT);
+
         if (
             empty($nro_identidad) || empty($razon_social) || empty($telefono) || empty($correo) ||
             empty($departamento) || empty($provincia) || empty($distrito) || empty($cod_postal) ||
@@ -33,7 +58,7 @@ if ($tipo == "registrar") {
             $arrPersona = $objPersona->registrarPersona(
                 $nro_identidad, $razon_social, $telefono, $correo,
                 $departamento, $provincia, $distrito, $cod_postal,
-                $direccion, $rol, password_hash($password, PASSWORD_BCRYPT), 
+                $direccion, $rol, password_hash($password, PASSWORD_DEFAULT), 
                 $estado, $fecha_reg
             );
 
@@ -47,9 +72,7 @@ if ($tipo == "registrar") {
     }
 }
 
-if ($tipo == "listar") {
-   
-}
+
 
 if ($tipo == "ver") {
     
@@ -63,3 +86,4 @@ if ($tipo == "eliminar") {
     
 }
 ?>
+

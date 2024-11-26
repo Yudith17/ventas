@@ -52,7 +52,7 @@
         <label for="estado">Estado: </label>
         <select name="estado" id="estado" class="form-control" required>
             <option value="1">Activo</option>
-            <option value="0">Inactivo</option>
+            
         </select>
     </div>
     <div>

@@ -1,9 +1,44 @@
 <?php 
 require_once('../model/productoModel.php');
+require_once('../model/categoriaModel.php');
+require_once('../model/personaModel.php');
 $tipo=$_REQUEST['tipo'];
 
 //instancio la clase modeloproducto
 $objProducto = new ProductoModel();
+$objCategoria = new CategoriaModel();
+$objPersona = new PersonaModel();
+
+if ($tipo == "listar") {
+
+    $arr_respuesta = array('status'=>false,'contenido'=>'');
+    $arr_productos =  $objProducto->obtener_productos();
+
+    if (!empty($arr_productos)) {
+        
+        for ($i=0; $i < count($arr_productos); $i++) {
+
+            $id_categoria = $arr_productos[$i]->id_categoria;
+            $r_categoria= $objCategoria->obtener_Categoria($id_categoria);
+            $arr_productos[$i]->categoria=$r_categoria;
+
+            $id_proveedor = $arr_productos[$i]->id_proveedor;
+            $r_proveedor= $objPersona->obtener_Persona($id_proveedor);
+            $arr_productos[$i]->proveedor=$r_proveedor;
+
+            $id_producto = $arr_productos[$i]->id;
+            $producto = $arr_productos[$i]->nombre;
+            $opciones ='';
+            $arr_productos[$i]->options = $opciones;
+        }
+        $arr_respuesta ['status']=true;
+        $arr_respuesta ['contenido']= $arr_productos;
+    }
+       
+      echo json_encode($arr_respuesta);
+}
+
+
 
 if ($tipo=="registrar") {
    // print_r($_POST);
@@ -53,9 +88,28 @@ if ($tipo=="registrar") {
     }
 }
 
-if ($tipo=="listar") {
-    
+if ($tipo== 'obtener') {
+    $id = $_GET['id'];
+    $producto = obtener_producto_por_id($id); // Función que obtiene el producto por su ID
+    if ($producto) {
+        echo json_encode(['status' => true, 'contenido' => $producto]);
+    } else {
+        echo json_encode(['status' => false, 'mensaje' => 'Producto no encontrado']);
+    }
 }
+
+if ($tipo == 'eliminar') {
+    $id = $_GET['id'];
+    $resultado = eliminar_producto($id); // Función para eliminar el producto
+    if ($resultado) {
+        echo json_encode(['status' => true, 'mensaje' => 'Producto eliminado']);
+    } else {
+        echo json_encode(['status' => false, 'mensaje' => 'Error al eliminar el producto']);
+    }
+}
+
+
+
 
 if ($tipo=="ver") {
     

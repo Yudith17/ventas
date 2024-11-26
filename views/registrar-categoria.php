@@ -10,6 +10,6 @@
         <input type="text" class="form-control" required id= "detalle" name="detalle">
     </div>
    
-    <button type="button" class="btn btn-info " onclick="registrar_producto();">Registrar</button>
+    <button type="button" class="btn btn-info " onclick="registrar_categoria();">Registrar</button>
 </form>
 <script src="<?php echo BASE_URL;?>views/js/function_categoria.js"></script>

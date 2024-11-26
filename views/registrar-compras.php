@@ -21,7 +21,9 @@
             
         </select>
     </div>
-    <button type="button" class="btn btn-info" onclick="registrar_compra();">Registrar Compra</button>
+    <button type="button" class="btn btn-info" onclick="registrar_compra();">Registrar</button>
 </form>
 
 <script src="<?php echo BASE_URL;?>views/js/functions-compra.js"></script>
+<script> listar_Trabajador();</script>
+<script> listar_Producto();</script>

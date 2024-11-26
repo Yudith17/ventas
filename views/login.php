@@ -6,6 +6,9 @@
     <title>Inicio de Sesión</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script >
+        const base_url='<?php echo BASE_URL;?>';
+    </script>
     <style>
         .login-container {
             max-width: 400px;
@@ -35,7 +38,7 @@
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLec-cz5LHdEGGmOQfmrY-z3TmxAM6PaeEcg&s" alt="Logo">
             </div>
             <h2 class="text-center mb-4">Inicio de sesión</h2>
-            <form>
+            <form id="frm_iniciar_sesion">
                 <div class="form-group">
                     <label for="username">Usuario</label>
                     <input type="text" class="form-control" id="username" name="username">
@@ -45,7 +48,7 @@
                     <input type="password" class="form-control" id="password" name="password">
                     
                 </div>
-                <a href="<?php echo BASE_URL?>inicio" class="btn btn-secondary btn-block create-account mt-3">Iniciar Sesión</a>
+                <button type="submit" class="btn btn-secondary btn-block create-account mt-3">Iniciar Sesión</button>
                 <a href="#" class="d-block text-center mt-3">Olvidé mi contraseña</a>
                 <a href="crear_cuenta.html" class="btn btn-secondary btn-block create-account mt-3">Crear cuenta</a>
                 <a href="https://www.facebook.com" class="btn btn-primary btn-block social-login facebook mt-3">Ingresar con Facebook</a>
@@ -56,6 +59,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="<?php echo BASE_URL;?>views/js/functions_login.js"></script>
 </body>
 </html>
 

@@ -1,3 +1,48 @@
+async function listar_personas() {
+    try {
+        let respuesta = await fetch(base_url + 'controller/persona.php?tipo=listar');
+        let json = await respuesta.json();
+        if (json.status) {
+            let datos = json.contenido;
+            let cont = 0;
+            datos.forEach(item => {
+                let nueva_fila = document.createElement("tr");
+                nueva_fila.id = "fila" + item.id;
+                cont++;
+                nueva_fila.innerHTML = `
+                    <th>${cont}</th>
+                    <td>${item.nro_identidad}</td>
+                    <td>${item.razon_social}</td>
+                    <td>${item.telefono}</td>
+                    <td>${item.correo}</td>
+                    <td>${item.departamento}</td>
+                    <td>${item.provincia}</td>
+                    <td>${item.distrito}</td>
+                    <td>${item.cod_postal}</td>
+                    <td>${item.direccion}</td>
+                    <td>${item.rol}</td>
+                    <td>${item.password}</td>
+                    <td>${item.estado}</td>
+                    <td>${item.fecha_reg}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal">Editar</button>
+                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminarModal">Eliminar</button>
+                    </td>
+                `;
+                document.querySelector('#tbl_persona').appendChild(nueva_fila);
+                 //console.log(nueva_fila);
+            });
+        }
+        console.log(json);
+    } catch (error) {
+        console.log("Oops, ocurrió un error: " + error);
+    }
+}
+
+if (document.querySelector('#tbl_persona')) {
+    listar_personas();
+}
+
 async function registrar_persona() {
     let nro_identidad = document.getElementById('nro_identidad').value;
     let razon_social = document.getElementById('razon_social').value;

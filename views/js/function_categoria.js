@@ -1,9 +1,41 @@
 
-async function 	insertarCategoria() {
+async function listar_categorias() {
+    try {
+        let respuesta = await fetch(base_url + 'controller/categoria.php?tipo=listar');
+        let json = await respuesta.json();
+        if (json.status) {
+            let datos = json.contenido;
+            let cont = 0;
+            datos.forEach(item => {
+                let nueva_fila = document.createElement("tr");
+                nueva_fila.id = "fila" + item.id;
+                cont++;
+                nueva_fila.innerHTML = `
+                    <th>${cont}</th>
+                    <td>${item.nombre}</td>
+                    <td>${item.detalle}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal">Editar</button>
+                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminarModal">Eliminar</button>
+                    </td>
+                `;
+                document.querySelector('#tbl_categoria').appendChild(nueva_fila);
+            });
+        }
+        console.log(json);
+    } catch (error) {
+        console.log("Oops, ocurrió un error: " + error);
+    }
+}
+
+if (document.querySelector('#tbl_categoria')) {
+    listar_categorias();
+}
+
+async function registrar_categoria() {
     let nombre = document.querySelector('#nombre').value;
     let detalle = document.querySelector('#detalle').value;
 
-    
     if (nombre === "" || detalle === "") {
         alert("Error, campos vacíos");
         return; 
@@ -15,7 +47,6 @@ async function 	insertarCategoria() {
         datos.append("nombre", nombre);
         datos.append("detalle", detalle);
 
-       
         let respuesta = await fetch(base_url + 'controller/categoria.php?tipo=registrar', {
             method: 'POST',
             mode: 'cors',
@@ -56,7 +87,5 @@ async function listar_Categoria() {
         console.log("Error al cargar categorías: " + e);
     }
 }
-
-
 
 

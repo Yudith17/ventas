@@ -1,10 +1,16 @@
 <?php
+session_start();
 class vistaModelo{
 
     protected static function obtener_vista($vista){
-        $palabras_permitidas =[ 'usuario', 'nuevo_usuario','usuario','producto','nuevo-producto','abrigosn','inicio','detallecarrito',
+        $palabras_permitidas =[ 'usuario', 'nuevo_usuario','personas','categorias','producto','usuario','nuevo-producto','abrigosn','inicio','detallecarrito',
         'conjunton','pantalonn','polon','vestidosn','abrigoh','chortsh','conjuntoh','pantalonh','poloh','abrigom','conjuntom','polom','pantalonm','vestidom','faldam','topsm','sudaderasm',
-          'carrito','nosotros','detallepantalon','contacto','pagar','detalleproducto', 'registrar-categoria', 'registrar-compras', 'registrar-persona']; //carpetas de html
+          'carrito','nosotros','detallepantalon','contacto','pagar','detalleproducto', 'registrar-categoria', 'registrar-compras', 'registrar-persona','productos' ,'compra']; //carpetas de html
+
+          /*if (!isset ($_SESSION['sesion_ventas_id'])) {
+           return "login";
+          }*/
+
         if(in_array($vista, $palabras_permitidas)){
             if (is_file("./views/".$vista.".php")) {
                 $contenido = "./views/".$vista.".php";

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href= "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <script>
       const base_url='<?php echo BASE_URL;?>';
     </script>
@@ -98,6 +99,9 @@
                           <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="<?php echo BASE_URL?>detallecarrito">Descripcion</a>
                           </li>
+                          <li class="nav1"><a onclick ="cerrar_sesion();" > cerrar sesion</a> </li>
+                          <li class="nav1"><a> <i class= "fa fa-user"></i> cerrar sesion</a> </li>
+                         
                       </ul>
                     </div>
                 </div>
