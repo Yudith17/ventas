@@ -16,8 +16,7 @@ async function listar_productos(){
                                   <td>${item.stock}</td>
                                   <td>${item.categoria.nombre}</td>
                                   <td>${item.proveedor.razon_social}</td>
-                                  <td><button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal">Editar</button>
-                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminarModal">Eliminar</button></td>
+                                  <td>${items.options}</td>
             `;
             document.querySelector('#tbl_producto').appendChild(nueva_fila);
             //console.log(nueva_fila);
