@@ -17,4 +17,4 @@
     </table>
 </div>
 
-<script src="<?php echo BASE_URL;?>views/js/functions-compra.js"></script>
+<script src="<?php echo BASE_URL;?>views/js/funtions-compra.js"></script>

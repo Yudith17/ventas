@@ -10,6 +10,16 @@ class PersonaModel {
         $this->conexion = $this->conexion->connect();
     }
 
+    public function obtener_persona(){
+        $arrRespuesta = array();
+        $respuesta = $this->conexion->query("SELECT * FROM persona");
+        while($objeto = $respuesta->fetch_object()) {
+            array_push($arrRespuesta, $objeto);
+    
+        }
+        return $arrRespuesta;
+    }
+
     
     public function registrarPersona(
         $nro_identidad, $razon_social, $telefono, $correo,
@@ -31,12 +41,7 @@ class PersonaModel {
         
         return $persona;
     }
-    public function obtener_Persona($id){
-        $respuesta = $this->conexion->query("SELECT * FROM persona WHERE id='{$id}'");
-        $objeto = $respuesta->fetch_object();
-        return $objeto;
-     }
-
+   
   
     public function actualizarPersona($id, $razon_social, $telefono, $correo, $direccion, $rol, $estado) {
         $sql = $this->conexion->prepare("UPDATE persona SET 

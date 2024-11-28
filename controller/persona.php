@@ -9,7 +9,7 @@ $objpersona = new personaModel();
 
 if ($tipo == "listar") {
     $arr_Respuesta = array('status' => false, 'contenido' => '');
-    $arr_personas = $objpersona->obtener_Persona();
+    $arr_personas = $objpersona->obtener_persona();
 
     // Check if any persons were found
     if (!empty($arr_personas)) {
@@ -53,7 +53,7 @@ if ($tipo == "registrar") {
             $secure_password = password_hash($password, PASSWORD_DEFAULT);
 
             // Call the method to register a person
-            $arrPersona = $objpersona->registrarPersona(
+            $arrPersona = $objpersona->registrar_persona(
                 $nro_identidad, $razon_social, $telefono, $correo,
                 $departamento, $provincia, $distrito, $cod_postal,
                 $direccion, $rol, $secure_password, // Use the hashed password

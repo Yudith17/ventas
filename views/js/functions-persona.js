@@ -31,6 +31,7 @@ async function listar_personas() {
                 `;
                 document.querySelector('#tbl_persona').appendChild(nueva_fila);
                  //console.log(nueva_fila);
+                 
             });
         }
         console.log(json);

@@ -58,7 +58,7 @@ async function registrar_compra() {
         const datos = new FormData(frmRegistrarCompra);  // Asumiendo que el formulario tiene el id 'frmRegistrarCompra'
 
         // Enviar los datos hacia el controlador
-        let respuesta = await fetch(base_url + 'controller/compra.php?tipo=registrar', {
+        let respuesta = await fetch(base_url + 'controller/compras.php?tipo=registrar', {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
