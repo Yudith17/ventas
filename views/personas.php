@@ -26,3 +26,4 @@
 </div>
 
 <script src="<?php echo BASE_URL;?>views/js/functions_persona.js"></script>
+<script src="<?php echo BASE_URL;?>views/js/functions-persona.js"></script>
