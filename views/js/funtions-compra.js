@@ -22,10 +22,7 @@ async function listar_compras() {
                     <td>${item.cantidad}</td> <!-- Cantidad de la compra -->
                     <td>${item.precio}</td> <!-- Precio de la compra -->
                     <td>${item.trabajador.razon_social}</td> <!-- Trabajador que realizó la compra -->
-                    <td>
-                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal">Editar</button>
-                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminarModal">Eliminar</button>
-                    </td> <!-- Acciones: Editar y Eliminar -->
+                    <td>${items.options}</td>
                 `;
 
                 // Añadir la fila de datos a la tabla

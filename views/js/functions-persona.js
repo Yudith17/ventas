@@ -24,10 +24,7 @@ async function listar_personas() {
                     <td>${item.password}</td>
                     <td>${item.estado}</td>
                     <td>${item.fecha_reg}</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal">Editar</button>
-                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminarModal">Eliminar</button>
-                    </td>
+                     <td>${items.options}</td>
                 `;
                 document.querySelector('#tbl_persona').appendChild(nueva_fila);
                  //console.log(nueva_fila);
