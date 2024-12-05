@@ -1,47 +1,53 @@
 async function listar_personas() {
     try {
-        let respuesta = await fetch(base_url + 'controller/persona.php?tipo=listar');
+        let respuesta = await fetch(base_url + 'controller/Persona.php?tipo=listar');
         let json = await respuesta.json();
+
         if (json.status) {
             let datos = json.contenido;
             let cont = 0;
+            // Agregar filas a la tabla
             datos.forEach(item => {
                 let nueva_fila = document.createElement("tr");
                 nueva_fila.id = "fila" + item.id;
-                cont++;
+                cont += 1;
                 nueva_fila.innerHTML = `
-                    <th>${cont}</th>
-                    <td>${item.nro_identidad}</td>
-                    <td>${item.razon_social}</td>
-                    <td>${item.telefono}</td>
-                    <td>${item.correo}</td>
-                    <td>${item.departamento}</td>
-                    <td>${item.provincia}</td>
-                    <td>${item.distrito}</td>
-                    <td>${item.cod_postal}</td>
-                    <td>${item.direccion}</td>
-                    <td>${item.rol}</td>
-                    <td>${item.password}</td>
-                    <td>${item.estado}</td>
-                    <td>${item.fecha_reg}</td>
-                     <td>${items.options}</td>
+                    <tr>
+                        <th>${cont}</th>
+                        <td>${item.nro_identidad}</td>
+                        <td>${item.razon_social}</td>
+                        <td>${item.telefono}</td>
+                        <td>${item.correo}</td>
+                        <td>${item.departamento}</td>
+                        <td>${item.provincia}</td>
+                        <td>${item.distrito}</td>
+                        <td>${item.cod_postal}</td>
+                        <td>${item.direccion}</td>
+                        <td>${item.rol}</td>
+                        <td>${item.password}</td>
+                        <td>${item.estado}</td>
+                        <td>${item.fecha_reg}</td>
+                        <td>${item.options}</td>
+                    </tr>
                 `;
-                document.querySelector('#tbl_persona').appendChild(nueva_fila);
-                 //console.log(nueva_fila);
-                 
+                document.querySelector("#tbl_persona")
+                    .appendChild(nueva_fila);
             });
         }
         console.log(json);
     } catch (error) {
-        console.log("Oops, ocurrió un error: " + error);
+        console.error("Error al listar a las Personas: " + error);
     }
 }
 
+// Verifica si existe el elemento con ID `tbl_persona` y llama a la función.
 if (document.querySelector('#tbl_persona')) {
     listar_personas();
 }
 
-async function registrar_persona() {
+
+async function registrarPersona() {
+    // Capturamos los valores del formulario
     let nro_identidad = document.getElementById('nro_identidad').value;
     let razon_social = document.getElementById('razon_social').value;
     let telefono = document.getElementById('telefono').value;
@@ -52,52 +58,66 @@ async function registrar_persona() {
     let cod_postal = document.getElementById('cod_postal').value;
     let direccion = document.getElementById('direccion').value;
     let rol = document.getElementById('rol').value;
-    let password = document.getElementById('password').value;
-    let estado = document.getElementById('estado').value;
-    let fecha_reg = document.getElementById('fecha_reg').value;
-
-    // Validate that all fields are filled
-    if (nro_identidad === "" || razon_social === "" || telefono === "" || correo === "" ||
-        departamento === "" || provincia === "" || distrito === "" || cod_postal === "" ||
-        direccion === "" || rol === "" || password === "" || estado === "" || fecha_reg === "") {
-        alert("Error, campos vacíos");
+    // let password = document.getElementById('password').value;
+    
+    if (!nro_identidad || !razon_social || !telefono || !correo || !departamento ||
+        !provincia || !distrito || !cod_postal || !direccion || !rol /*|| !password*/ ) {
+            
+        alert("Error!!, Todos los campos son obligatorios.");
         return;
     }
-
+    
     try {
-        // Create FormData with person data
-        const datos = new FormData();
-        datos.append("nro_identidad", nro_identidad);
-        datos.append("razon_social", razon_social);
-        datos.append("telefono", telefono);
-        datos.append("correo", correo);
-        datos.append("departamento", departamento);
-        datos.append("provincia", provincia);
-        datos.append("distrito", distrito);
-        datos.append("cod_postal", cod_postal);
-        datos.append("direccion", direccion);
-        datos.append("rol", rol);
-        datos.append("password", password);
-        datos.append("estado", estado);
-        datos.append("fecha_reg", fecha_reg);
-
-        // Send data to the controller
-        let respuesta = await fetch(base_url + 'controller/persona.php?tipo=registrar', {
+        //capturamos datos del formulario nuevapersona.php
+        const datos = new FormData(frmRegistrarPersona);
+        //enviamos datos hacia el controlador
+        let respuesta = await fetch(base_url + 'controller/Persona.php?tipo=registrar', {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
             body: datos
         });
-
-        let json = await respuesta.json();
+        json = await respuesta.json();
         if (json.status) {
-            swal("Registro", json.mensaje, "success");
+            swal("registro", json.mensaje, "success");
         } else {
-            swal("Registro", json.mensaje, "error");
+            swal("registro", json.mensaje, "error");
         }
         console.log(json);
 
     } catch (e) {
-        console.log("Opss, ocurrió un error: " + e);
+        console.log("Oops, ocurrio un error" + e);
+    }
+}
+
+//Ver Personas
+async function ver_persona(id){
+    const formData = new FormData();
+    formData.append('id_persona', id);
+    try {
+        let respuesta = await fetch(base_url+'controller/Persona.php?tipo=ver',{
+            method: 'POST',
+            mode: 'cors',
+            cache:'no-cache',
+            body: formData
+        });
+        json = await respuesta.json();
+        if (json.status) {
+            document.querySelector('#codigo').value = json.contenido.codigo;
+            document.querySelector('#nro_identidad').value = json.contenido.nro_identidad;
+            document.querySelector('#razon_social').value = json.contenido.razon_social;
+            document.querySelector('#telefono').value = json.contenido.telefono;
+            document.querySelector('#correo').value = json.contenido.correo;
+            document.querySelector('#departamento').value = json.contenido.departamento;
+            document.querySelector('#direccion').value = json.contenido.direccion;
+            document.querySelector('#rol').value = json.contenido.rol;
+
+        }else{
+            window.location = base_url+"personas";
+        }
+
+        console.log(json);
+    } catch (error) {
+        console.log("Opps ocurrio un error" + error);
     }
 }

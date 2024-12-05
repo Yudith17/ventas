@@ -113,10 +113,58 @@ if ($tipo == 'eliminar') {
 
 
 if ($tipo=="ver") {
-    
+    //print_r($_POST);
+    $id_producto = $_POST['id_producto'];
+    $arr_Respuesta = $objProducto->verProducto($id_producto);
+    //print_r($arr_Respuesta);
+    if (empty($arr_Respuesta)) {
+        $respuesta = array('status'=> false,'mensaje'=>"Error, no hay informacion");
+    }else{
+        $response = array('status'=> true,'mensaje'=>"datos encontrados", 'contenido'=>$arr_Respuesta);
+    }
+    echo json_encode($response);
+
 }
 if ($tipo=="actualizar") {
-   
+   //print_r($_POST['']);
+   //print_r($_FILES['imagen']['tmp_name']);
+   if($_POST){
+    $id_producto = $_POST['id_producto']
+    $img = $_POST['img'];
+    $nombre = $_POST['nombre'];
+    $detalle = $_POST['detalle'];
+    $precio = $_POST['precio'];
+    $categoria = $_POST['categoria'];
+    $proveedor = $_POST['proveedor'];
+
+    if ($id_producto ==""|| $nombre=="" || $detalle=="" || $precio=="" ||$categoria=="" ||
+     $proveedor=="") {
+        //respuesta
+        $arr_respuesta = array('status'=>false,'mensaje'=>'Error,campos vacíos');
+    }else {
+        $arrProducto = $objProducto->actualizarPorducto($id,$nombre,$detalle,$precio , $categoria,  $proveedor);
+        if ($arrProducto->id_producto> 0) {
+           $arr_respuesta = array ('status' => true mensaje => 'Actualizado correctamente');
+            if ($_FILES ['imagen'] ['tmp_name'] !="") {
+                unlink('../assets/img_producto/'.$img);
+
+                //cargar archivo
+                $archivo = $_FILES['imagen']['tmp_name'];
+                $destino = './assets/img_productos/';
+                $tipoArchivo = strtolower(pathinfo($_FILES["imagen"]["name"], PATHINFO_EXTENSION));
+                
+                if (move_uploaded_file($archivo, $destino . '' . $id_producto.' . ' .$tipoArchivo)) {
+                    # code...
+                }
+    
+            }
+
+        }else{
+            $arr_respuesta = array ('status' => false mensaje => 'Error al actualizar producto');
+        }
+    }
+
+}
 }
 
 if ($tipo=="eliminar") {

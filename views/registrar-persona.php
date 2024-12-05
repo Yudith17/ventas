@@ -41,25 +41,10 @@
             <option value="">Seleccione</option>
             <option value="admin">Admin</option>
             <option value="usuario">Usuario</option>
-            
         </select>
     </div>
-    <div>
-        <label for="password">Contraseña: </label>
-        <input type="password" class="form-control" required id="password" name="password">
-    </div>
-    <div>
-        <label for="estado">Estado: </label>
-        <select name="estado" id="estado" class="form-control" required>
-            <option value="1">Activo</option>
-            
-        </select>
-    </div>
-    <div>
-        <label for="fecha_reg">Fecha de Registro: </label>
-        <input type="date" class="form-control" required id="fecha_reg" name="fecha_reg">
-    </div>
-    <button type="button" class="btn btn-info" onclick="registrar_persona();">Registrar</button>
+
+    <button type="button" class="btn btn-info" onclick="registrarPersona();">Registrar</button>
 </form>
 
-<script src="<?php echo BASE_URL;?>views/js/functions-persona.js"></script>
+<script src="<?php echo BASE_URL; ?>views/js/functions-persona.js"></script>

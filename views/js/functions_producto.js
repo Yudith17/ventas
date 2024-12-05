@@ -121,3 +121,55 @@ async function listar_proveedor() {
         console.log("Error  al cargar categorias " + e);
     }
 }
+
+async function ver_producto(id){
+    const formData = new FormData();
+    formData.append ('id_producto', id);
+    try {
+        let respuesta = await fetch(base_url+ 'controller/producto.php?tipo=ver',{
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-cache',
+            body:formData
+        });
+
+        json = await respuesta.json();
+        if (json.status) {
+            document.querySelector('#codigo').value = json.contenido.codigo;
+            document.querySelector('#nombre').value = json.contenido.nombre;
+            document.querySelector('#detalle').value = json.contenido.detalle;
+            document.querySelector('#precio').value = json.contenido.precio;
+            document.querySelector('#stock').value = json.contenido.stock;
+            document.querySelector('#categoria').value = json.contenido.categoria;
+            document.querySelector('#proveedor').value = json.contenido.proveedor;
+            
+        
+        }else{
+            window.location= base_url+"producto";
+        }
+
+
+        console.log(json);
+
+    } catch (error) {
+        console.log("oopss ocurrio um error "+error);
+    }
+}
+
+async function actualizar_producto(){
+    const datos = new FormData(frmActualizar);
+    try {
+        let respuesta = await fetch(base_url + 'controller/producto.php?tipo=actualizar',{
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body:formData
+
+        });
+        json = await respuesta.json();
+        console.log(json);
+        
+    }catch (error) {
+        console.log("oopss ocurrio um error "+error);
+    }
+}

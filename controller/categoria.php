@@ -38,7 +38,7 @@ if ($tipo=="listar"){
     if (!empty($arr_categorias)) {
         
         for ($i=0; $i < count($arr_categorias); $i++) { 
-            $categoria = $arr_categorias[$i]->id;
+            $ategoria = $arr_categorias[$i]->id;
             $categoria = $arr_categorias[$i]->nombre;
             $opciones ='';
             $arr_categorias[$i]->options = $opciones;

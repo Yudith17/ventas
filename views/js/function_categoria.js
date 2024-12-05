@@ -67,7 +67,7 @@ async function registrar_categoria() {
     }
 }
 
-async function listar_Categoria() {
+/* async function listar_Categoria() {
     try {
         let respuesta = await fetch(base_url + '/controller/categoria.php?tipo=listar');
         let json = await respuesta.json();
@@ -87,5 +87,5 @@ async function listar_Categoria() {
         console.log("Error al cargar categorías: " + e);
     }
 }
-
+ */
 

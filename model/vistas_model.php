@@ -5,7 +5,7 @@ class vistaModelo{
     protected static function obtener_vista($vista){
         $palabras_permitidas =[ 'usuario', 'nuevo_usuario','personas','categorias','producto','usuario','nuevo-producto','abrigosn','inicio','detallecarrito',
         'conjunton','pantalonn','polon','vestidosn','abrigoh','chortsh','conjuntoh','pantalonh','poloh','abrigom','conjuntom','polom','pantalonm','vestidom','faldam','topsm','sudaderasm',
-          'carrito','nosotros','detallepantalon','contacto','pagar','detalleproducto', 'registrar-categoria', 'registrar-compras', 'registrar-persona','productos' ,'compra']; //carpetas de html
+          'carrito','nosotros','detallepantalon','contacto','pagar','detalleproducto', 'registrar-categoria', 'registrar-compras', 'registrar-persona','productos','compra','editar-producto']; //carpetas de html
 
           /*if (!isset ($_SESSION['sesion_ventas_id'])) {
            return "login";
