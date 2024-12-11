@@ -15,7 +15,6 @@
                 <th>rol</th>
                 <th>password</th>
                 <th>estado</th>
-                <th>fecha_reg</th>
                 <th>acciones</th>
             </tr>
         </thead>

@@ -14,10 +14,7 @@ async function listar_categorias() {
                     <th>${cont}</th>
                     <td>${item.nombre}</td>
                     <td>${item.detalle}</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal">Editar</button>
-                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminarModal">Eliminar</button>
-                    </td>
+                    <td>${item.options}</td>
                 `;
                 document.querySelector('#tbl_categoria').appendChild(nueva_fila);
             });
@@ -89,3 +86,110 @@ async function registrar_categoria() {
 }
  */
 
+async function ver_categoria(id) {
+    const formData = new FormData();
+    formData.append('id_categoria', id);  // Usamos 'id_categoria' en lugar de 'id_producto'
+    
+    try {
+        let respuesta = await fetch(base_url + 'controller/categoria.php?tipo=ver', {
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-cache',
+            body: formData
+        });
+
+        let json = await respuesta.json();
+        
+        if (json.status) {
+            // Asignar los valores obtenidos a los campos del formulario
+            document.querySelector('#nombre').value = json.contenido.nombre;
+            document.querySelector('#detalle').value = json.contenido.detalle;
+        } else {
+            window.location = base_url + "categoria";  // Redirigir si no se encuentra la categoría
+        }
+
+        console.log(json);
+
+    } catch (error) {
+        console.log("Oops, ocurrió un error: " + error);
+    }
+}
+
+
+async function actualizarCategoria() {
+    const frmActualizar = document.getElementById('frmActualizar'); // Asegúrate de obtener correctamente el formulario
+
+    if (!frmActualizar) {
+        console.error("Formulario no encontrado");
+        return;
+    }
+
+    const datos = new FormData(frmActualizar);
+    
+    try {
+        let respuesta = await fetch(base_url + 'controller/categoria.php?tipo=actualizar', {
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-cache',
+            body: datos
+        });
+
+        // Comprobamos si la respuesta es exitosa
+        if (!respuesta.ok) {
+            throw new Error('Error en la respuesta del servidor');
+        }
+
+        const json = await respuesta.json();
+        console.log(json); // Muestra la respuesta del servidor
+
+        // Aquí puedes manejar la respuesta del servidor
+        if (json.status) {
+            alert('Categoría actualizada correctamente');
+            // Realiza cualquier otra acción que desees después de una actualización exitosa
+        } else {
+            alert('Error al actualizar la categoría: ' + json.mensaje);
+        }
+
+    } catch (e) {
+        console.error("Error al actualizar la categoría:", e);
+    }
+}
+
+
+async function Eliminar_categoria(id) {
+    swal({
+        title: "¿Realmente desea eliminar esta categoría?",
+        text: "",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true
+    }).then((willDelete) => {
+        if (willDelete) {
+            fnt_eliminar_categoria(id);
+        }
+    })
+}
+
+async function fnt_eliminar_categoria(id) {
+    const formData = new FormData();
+    formData.append('id_categoria', id);
+    try {
+        let respuesta = await fetch(base_url + 'controller/categoria.php?tipo=eliminar', {
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-cache',
+            body: formData
+        });
+
+        const json = await respuesta.json();
+        if (json.status) {
+            swal("Eliminar", "Categoría eliminada correctamente", "success");
+            document.querySelector('#fila' + id).remove();
+        } else {
+            swal('Eliminar', 'Error al eliminar la categoría', 'warning');
+        }
+
+    } catch (error) {
+        console.log("Ocurrió un error: " + error);
+    }
+}

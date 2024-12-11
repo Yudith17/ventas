@@ -18,9 +18,9 @@ if ($tipo == "listar") {
             $id_Persona = $arr_Persona[$i]->id;
             $razon_social = $arr_Persona[$i]->razon_social;
 
-            $opciones = '<a href=" '.BASE_URL.'editar-persona/'.$id_Persona.'"><button class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></button></a>
-                    <button class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"  onclick="eliminar_persona('.$id_Persona.');"></i></button>';  //eliminar_categoria(va llamar al id);
-            $arr_Persona[$i]->options = $opciones;
+             //localhost/editar-producto/4                                                               //eliminar_producto(va llamar al id);
+             $opciones ='<a href=" '.BASE_URL.'editar-producto/'.$id_Persona.'">Editar</a><button onclick="Eliminar_producto('.$id_Persona.');">Eliminar</button>';
+             $arr_Persona[$i]->options = $opciones;
         }
         $arr_Respuesta['status'] = true;
         $arr_Respuesta['contenido'] = $arr_Persona;
@@ -33,7 +33,7 @@ if ($tipo == "listar") {
 if ($tipo == "registrar") {
 
   if ($_POST) {
-    $nro_identidad = $_POST['numero_identidad'];
+    $nro_identidad = $_POST['nro_identidad'];
     $razon_social = $_POST['razon_social'];
     $telefono = $_POST['telefono'];
     $correo = $_POST['correo'];
@@ -102,8 +102,7 @@ if ($tipo == "listar_trabajador") {
     for ($i = 0; $i < count($arr_Trabajador); $i++) {
       $id_trabajador = $arr_Trabajador[$i]->id;
       $razon_social = $arr_Trabajador[$i]->razon_social;
-      $opciones = '<a href="" class="btn btn-success"><i class="fa fa-pencil"> Editar</i></a>
-                       <a href="" class="btn btn-danger"><i class="fa fa-trash"> Eliminar</i></a>';
+      $opciones = '';
       $arr_Trabajador[$i]->options = $opciones;
     }
 
@@ -125,4 +124,53 @@ if($tipo=="ver"){
   }
   echo json_encode($response);
   }
+
+
+  if ($tipo == "actualizar") {
+    // Obtener los datos del formulario
+    $id_persona = $_POST['id_persona']; // ID de la persona a actualizar
+    $nro_identidad = $_POST['nro_identidad']; // Número de identidad
+    $razon_social = $_POST['razon_social']; // Razón social
+    $telefono = $_POST['telefono']; // Teléfono
+    $correo = $_POST['correo']; // Correo
+    $departamento = $_POST['departamento']; // Departamento
+    $provincia = $_POST['provincia']; // Provincia
+    $distrito = $_POST['distrito']; // Distrito
+    $cod_postal = $_POST['cod_postal']; // Código postal
+    $direccion = $_POST['direccion']; // Dirección
+    $rol = $_POST['rol']; // Rol
+
+    // Validación de campos
+    if ($nro_identidad == "" || $razon_social == "" || $telefono == "" || $correo == "" || $departamento == "" || $provincia == "" || $distrito == "" || $cod_postal == "" || $direccion == "" || $rol == "") {
+        // Respuesta de error si algún campo está vacío
+        $arr_Respuesta = array('status' => false, 'mensaje' => 'Error, campos vacíos');
+    } else {
+        // Llamada a la función para actualizar la persona
+        $arrPersona = $objPersona->actualizarPersona($id_persona, $nro_identidad, $razon_social, $telefono, $correo, $departamento, $provincia, $distrito, $cod_postal, $direccion, $rol);
+        
+        // Verificar si la actualización fue exitosa
+        if ($arrPersona->id_persona > 0) {
+            $arr_Respuesta = array('status' => true, 'mensaje' => 'Persona actualizada correctamente');
+        } else {
+            $arr_Respuesta = array('status' => false, 'mensaje' => 'Error al actualizar persona');
+        }
+    }
+
+    // Enviar la respuesta en formato JSON
+    echo json_encode($arr_Respuesta);
+}
+
+
+if ($tipo == "eliminar") {
+    $id_persona = $_POST['id_persona'];
+    $arr_Respuesta = $objPersona->eliminarPersona($id_persona);
+
+    if (empty($arr_Respuesta)) {
+        $response = array('status' => false);
+    } else {
+        $response = array('status' => true);
+    }
+    echo json_encode($response);
+}
+
 ?>

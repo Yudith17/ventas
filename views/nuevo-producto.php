@@ -41,5 +41,5 @@
     <button type="button" class="btn btn-info " onclick="registrar_producto();">Registrar</button>
 </form>
 <script src="<?php echo BASE_URL;?>views/js/functions_producto.js"></script>
-<script> listar_categorias();</script>
+<script> listar_Categorias();</script>
 <script> listar_proveedor();</script>

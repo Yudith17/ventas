@@ -28,10 +28,14 @@ if ($tipo == "listar") {
             $arr_compra[$i]->trabajador = $r_trabajador;  // Añadimos el trabajador a la compra
 
             // Información adicional de la compra
-            $arr_compra[$i]->nro = $i + 1;  // Número de la compra (puedes ajustar cómo se numera)
+            $id_compra = $arr_compra[$i]->id;
+            $compra = $arr_compra[$i]->producto;
+           
 
             // No he añadido más, pero podrías incluir botones de acción si es necesario
-            $arr_compra[$i]->options = '';  // Este campo puedes rellenarlo con los botones de "Editar" o "Eliminar"
+            //localhost/editar-producto/4                                                               //eliminar_producto(va llamar al id);
+            $opciones ='<a href=" '.BASE_URL.'editar-compra/'.$id_compra.'">Editar</a><button onclick="Eliminar_compra('.$id_compra.');">Eliminar</button>';
+            $arr_compra[$i]->options = $opciones; // Este campo puedes rellenarlo con los botones de "Editar" o "Eliminar"
         }
         
         // Respuesta exitosa
@@ -94,7 +98,7 @@ if ($tipo == "ver") {
 
     echo json_encode($response);
 }
-}
+
 
 if ($tipo == "actualizar") {
     if ($_POST) {

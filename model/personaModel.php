@@ -25,7 +25,7 @@ class PersonaModel
         $password
     ) {
         // Ejecutar un procedimiento almacenado y el procedimiento almacena los datos de una persona en la base de datos
-        $sql = $this->conexion->query("CALL insertpersona(
+        $sql = $this->conexion->query("CALL insertarPersona(
             '{$nro_identidad}', '{$razon_social}', '{$telefono}', 
             '{$correo}', '{$departamento}', '{$provincia}', 
             '{$distrito}', '{$cod_postal}', '{$direccion}', 
@@ -97,8 +97,18 @@ public function verPersona($id){
     $sql = $sql->fetch_object();
     return $sql;
 } 
+
+public function actualizarPersona($id, $nro_identidad, $razon_social, $telefono, $correo, $departamento, $provincia, $distrito, $cod_postal, $direccion, $rol){
+    $sql = $this->conexion->query("CALL actualizarPersona('{$id}', '{$nro_identidad}', '{$razon_social}', '{$telefono}', '{$correo}', '{$departamento}', '{$provincia}', '{$distrito}', '{$cod_postal}', '{$direccion}', '{$rol}')");
+    $sql = $sql->fetch_object();
+    return $sql;
 }
 
+public function eliminarPersona($id){
+    $sql = $this->conexion->query("CALL eliminarPersona('{$id}')");
+    $sql = $sql->fetch_object();
+    return $sql;
+}
 
-
+}
 ?>

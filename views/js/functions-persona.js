@@ -26,7 +26,6 @@ async function listar_personas() {
                         <td>${item.rol}</td>
                         <td>${item.password}</td>
                         <td>${item.estado}</td>
-                        <td>${item.fecha_reg}</td>
                         <td>${item.options}</td>
                     </tr>
                 `;
@@ -119,5 +118,79 @@ async function ver_persona(id){
         console.log(json);
     } catch (error) {
         console.log("Opps ocurrio un error" + error);
+    }
+}
+
+
+// Función para actualizar una persona
+async function actualizarPersona() {
+    const frmActualizar = document.getElementById('frmActualizar'); // Asegúrate de obtener correctamente el formulario
+
+    if (!frmActualizar) {
+        console.error("Formulario no encontrado");
+        return;
+    }
+
+    const datos = new FormData(frmActualizar);
+    
+    try {
+        let respuesta = await fetch(base_url + 'controller/Persona.php?tipo=actualizar', {
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-cache',
+            body: datos
+        });
+
+        // Comprobamos si la respuesta es exitosa
+        if (!respuesta.ok) {
+            throw new Error('Error en la respuesta del servidor');
+        }
+
+        const json = await respuesta.json();
+        console.log(json); // Muestra la respuesta del servidor
+        
+    } catch (e) {
+        console.error("Error al actualizar la persona:", e);
+    }
+}
+
+// Función para eliminar una persona
+async function Eliminar_persona(id) {
+    swal({
+        title:"¿Realmente desea eliminar esta persona?",
+        text:"",
+        icon:"warning",
+        buttons: true,
+        dangerMode: true
+    }).then((willDelete) => {
+        if (willDelete) {
+            fnt_eliminar_persona(id);
+        }
+    })
+}
+
+// Función interna para eliminar una persona
+async function fnt_eliminar_persona(id) {
+    const formData = new FormData();
+    formData.append('id_persona', id);
+    
+    try {
+        let respuesta = await fetch(base_url + 'controller/Persona.php?tipo=eliminar', {
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-cache',
+            body: formData
+        });
+
+        const json = await respuesta.json();
+        if (json.status) {
+            swal("Eliminar", "Persona eliminada correctamente", "success");
+            document.querySelector('#fila' + id).remove();
+        } else {
+            swal('Eliminar', 'Error al eliminar la persona', 'warning');
+        }
+
+    } catch (error) {
+        console.log("Ocurrió un error: " + error);
     }
 }

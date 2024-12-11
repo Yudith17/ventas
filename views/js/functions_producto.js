@@ -16,7 +16,7 @@ async function listar_productos(){
                                   <td>${item.stock}</td>
                                   <td>${item.categoria.nombre}</td>
                                   <td>${item.proveedor.razon_social}</td>
-                                  <td>${items.options}</td>
+                                  <td>${item.options}</td>
             `;
             document.querySelector('#tbl_producto').appendChild(nueva_fila);
             //console.log(nueva_fila);
@@ -71,7 +71,7 @@ try {
 }
 }
 
-async function listar_Categoria() {
+async function listar_Categorias() {
     try{
         let respuesta = await fetch(base_url+'/controller/categoria.php?tipo=listar');
         json = await respuesta.json();
@@ -156,10 +156,59 @@ async function ver_producto(id){
     }
 }
 
-async function actualizar_producto(){
+async function actualizarProducto() {
+    const frmActualizar = document.getElementById('frmActualizar'); // Asegúrate de obtener correctamente el formulario
+
+    if (!frmActualizar) {
+        console.error("Formulario no encontrado");
+        return;
+    }
+
     const datos = new FormData(frmActualizar);
+    
     try {
-        let respuesta = await fetch(base_url + 'controller/producto.php?tipo=actualizar',{
+        let respuesta = await fetch(base_url + 'controller/producto.php?tipo=actualizar', {
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-cache',
+            body: datos
+        });
+
+        // Comprobamos si la respuesta es exitosa
+        if (!respuesta.ok) {
+            throw new Error('Error en la respuesta del servidor');
+        }
+
+        const json = await respuesta.json();
+        console.log(json); // Muestra la respuesta del servidor
+        
+    } catch (e) {
+        console.error("Error al actualizar el producto:", e);
+    }
+}
+
+
+
+async function Eliminar_producto(id) {
+    swal({
+        title:"¿Realmente desea eliminar este producto?",
+        text:"",
+        icon:"warning",
+        buttons: true,
+        dangerMode: true
+    }).then((willDelete)=>{
+        if (willDelete) {
+            fnt_eliminar(id);
+        }
+    })
+}
+
+async function fnt_eliminar(id) {
+    //alert("Producto eliminado: id=" + id);
+    const formData = new FormData();
+    formData.append('id_producto',id);
+    try {
+        let respuesta = await fetch(base_url + 'controller/producto.php?tipo=eliminar',{
         method: 'POST',
         mode: 'cors',
         cache: 'no-cache',
@@ -167,9 +216,14 @@ async function actualizar_producto(){
 
         });
         json = await respuesta.json();
-        console.log(json);
+        if (json.status) {
+            swal("Eliminar","eliminado correctamente","success");
+            document.querySelector('#fila'+id).remove();
+        }else{
+           swal('Eliminar', 'error al eliminar el producto', 'warning');
+        }
         
     }catch (error) {
-        console.log("oopss ocurrio um error "+error);
+        console.log("ocurrio un error "+ error);
     }
 }
