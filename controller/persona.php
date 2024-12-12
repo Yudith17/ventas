@@ -5,6 +5,7 @@ $tipo = $_REQUEST['tipo'];
 
 // instancio de la clase PersonaModel
 $objPersona = new PersonaModel();
+$objproveedor = new PersonaModel();
 
 
 if ($tipo == "listar") {
@@ -19,7 +20,7 @@ if ($tipo == "listar") {
             $razon_social = $arr_Persona[$i]->razon_social;
 
              //localhost/editar-producto/4                                                               //eliminar_producto(va llamar al id);
-             $opciones ='<a href=" '.BASE_URL.'editar-producto/'.$id_Persona.'">Editar</a><button onclick="Eliminar_producto('.$id_Persona.');">Eliminar</button>';
+             $opciones ='<a href=" '.BASE_URL.'editar-persona/'.$id_Persona.'">Editar</a><button onclick="Eliminar_persona('.$id_Persona.');">Eliminar</button>';
              $arr_Persona[$i]->options = $opciones;
         }
         $arr_Respuesta['status'] = true;
@@ -59,18 +60,7 @@ if ($tipo == "registrar") {
       );
     } else {
       $objPersona =
-        $objPersona->registrarPersona(
-          $nro_identidad,
-          $razon_social,
-          $telefono,
-          $correo,
-          $departamento,
-          $provincia,
-          $distrito,
-          $cod_postal,
-          $direccion,
-          $rol,
-          $secure_password
+        $objPersona->registrarPersona($nro_identidad,$razon_social, $telefono,$correo,$departamento,$provincia,$distrito,$cod_postal,$direccion,$rol,$secure_password
         );
       if ($objPersona->id > 0) {
         $arr_Respuesta = array(
@@ -87,7 +77,6 @@ if ($tipo == "registrar") {
     }
   }
 }
-
 
 
 
@@ -112,6 +101,27 @@ if ($tipo == "listar_trabajador") {
 
   echo json_encode($arr_Respuesta);
 }
+
+
+if ($tipo=="listar_proveedor") {
+  //repuesta
+  $arr_Respuesta = array('status'=>false, 'contenido'=>'');
+  $arr_Personas = $objPersona->obtener_proveedores();
+  if (!empty($arr_Personas)) {
+      // recorremos el array para agregar las opciones de las categorias
+      for ($i=0; $i < count($arr_Personas); $i++) { 
+          $id_categoria = $arr_Personas[$i]->id;
+          $categoria = $arr_Personas[$i]->razon_social;
+          $opciones = '';
+          $arr_Personas[$i]->options = $opciones;
+      }
+      $arr_Respuesta['status'] = true;
+      $arr_Respuesta['contenido'] = $arr_Personas;
+  }
+  echo json_encode($arr_Respuesta);
+}
+
+
 if($tipo=="ver"){
   // print_r($_POST);
   $id_persona = $_POST['id_persona'];
@@ -149,7 +159,7 @@ if($tipo=="ver"){
         $arrPersona = $objPersona->actualizarPersona($id_persona, $nro_identidad, $razon_social, $telefono, $correo, $departamento, $provincia, $distrito, $cod_postal, $direccion, $rol);
         
         // Verificar si la actualización fue exitosa
-        if ($arrPersona->id_persona > 0) {
+        if ($arrPersona->p_id > 0) {
             $arr_Respuesta = array('status' => true, 'mensaje' => 'Persona actualizada correctamente');
         } else {
             $arr_Respuesta = array('status' => false, 'mensaje' => 'Error al actualizar persona');

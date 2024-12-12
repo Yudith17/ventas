@@ -102,7 +102,7 @@ async function ver_persona(id){
         });
         json = await respuesta.json();
         if (json.status) {
-            document.querySelector('#codigo').value = json.contenido.codigo;
+            document.querySelector('#id_persona').value = json.contenido.id;
             document.querySelector('#nro_identidad').value = json.contenido.nro_identidad;
             document.querySelector('#razon_social').value = json.contenido.razon_social;
             document.querySelector('#telefono').value = json.contenido.telefono;
@@ -140,17 +140,15 @@ async function actualizarPersona() {
             cache: 'no-cache',
             body: datos
         });
-
-        // Comprobamos si la respuesta es exitosa
-        if (!respuesta.ok) {
-            throw new Error('Error en la respuesta del servidor');
-        }
-
-        const json = await respuesta.json();
-        console.log(json); // Muestra la respuesta del servidor
-        
+        json = await respuesta.json();
+  if (json.status) {
+      swal("registro", json.mensaje, "success");
+  } else {
+      swal("registro", json.mensaje, "error");
+  }
+  console.log(json);
     } catch (e) {
-        console.error("Error al actualizar la persona:", e);
+         console.log("Oops, ocurrio un error" + e);
     }
 }
 

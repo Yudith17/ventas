@@ -103,6 +103,13 @@
                           <li class="nav1"><a> <i class= "fa fa-user"></i> cerrar sesion</a> </li>
                          
                       </ul>
+                      <nav class="navbar navbar-expand">
+    <ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+        <a class="nav-link" href="<?php echo BASE_URL ?>panel">
+        <button type="submit">PANEL DE ADMINISTRACION </button></a>
+      </li>
+    </ul>
                     </div>
                 </div>
             </div>

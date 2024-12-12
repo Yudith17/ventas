@@ -49,7 +49,10 @@
                     
                 </div>
                 <button type="submit" class="btn btn-secondary btn-block create-account mt-3">Iniciar Sesión</button>
-                
+                <a href="#" class="d-block text-center mt-3">Olvidé mi contraseña</a>
+                <a href="crear_cuenta.html" class="btn btn-secondary btn-block create-account mt-3">Crear cuenta</a>
+                <a href="https://www.facebook.com" class="btn btn-primary btn-block social-login facebook mt-3">Ingresar con Facebook</a>
+                <a href="https://www.google.com" class="btn btn-danger btn-block social-login google mt-3">Ingresar con Google</a>
             </form>
         </div>
     </div>

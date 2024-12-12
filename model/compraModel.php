@@ -54,14 +54,14 @@ FROM compras");
     }
 
    
-    /*public function listarCompras() {
+    public function listarCompras() {
         $result = $this->conexion->query("SELECT * FROM compras");
         $compras = [];
         while ($row = $result->fetch_assoc()) {
             $compras[] = $row;
         }
         return $compras;
-    }*/
+    }
 
    
     

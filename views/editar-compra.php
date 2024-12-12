@@ -1,35 +1,48 @@
-<div class="container mt-5">
-<h1 class="text-center mb-4 ">Formulario de Editar compras</h1>
-
-<form action="" class="from-control" id="formACtualizar" >
+<form action="" class="form-control" id="frmActualizarCompra">
     <input type="hidden" name="id_compra" id="id_compra">
-        <div class="mb-3">
-            <label for="id_producto">Producto: </label>
-            <select type="text" name="id_producto" id="id_producto"  class="form-control" required>
-            <option  class="id_proveedor" >Seleccione</option></select>
-        </div>
-        <div class="mb-3">
-            <label for="cantidad">Cantidad: </label>
-            <input type="number" name="cantidad" id="cantidad"  class="form-control" required>
-        </div>
-        <div class="mb-3">
-            <label for="precio">Precio: </label>
-            <input type="number" name="precio" id="precio"  class="form-control" required>
-        </div>
-        <div class="mb-3">
-            <label for="trabajador">Trabajador: </label>
-            <select type="text" name="trabajador" id="trabajador"  class="form-control" required>
-            <option  class="trabajador" >Seleccione</option></select>
-        </div>
-        <button type="button" class="mb-3 btn btn-outline-info" onclick="actualizarCompra();"><i class="fas fa-check"></i> Actualizar</button>
-    </form>
-</div>
 
-<script src="<?php echo BASE_URL;?>views/js/funtions-compra.js"></script>
-<script>listar_productos();</script>
-<script>listar_trabajadores();</script>
+    <div class="form-group">
+        <label for="producto">Producto: </label>
+        <select name="producto" id="producto" class="form-control" required>
+            <option value="">Seleccione un producto</option>
+            <!-- Opciones cargadas dinámicamente -->
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="cantidad">Cantidad: </label>
+        <input type="number" class="form-control" required id="cantidad" name="cantidad" min="1">
+    </div>
+
+    <div class="form-group">
+        <label for="precio">Precio: </label>
+        <input type="number" class="form-control" required id="precio" name="precio" min="0.01" step="0.01">
+    </div>
+
+    <div class="form-group">
+        <label for="trabajador">Trabajador: </label>
+        <select name="trabajador" id="trabajador" class="form-control" required>
+            <option value="">Seleccione un trabajador</option>
+            <!-- Opciones cargadas dinámicamente -->
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="fecha">Fecha de Compra: </label>
+        <input type="date" class="form-control" required id="fecha" name="fecha">
+    </div>
+
+    <div class="form-group">
+        <label for="observaciones">Observaciones: </label>
+        <textarea class="form-control" id="observaciones" name="observaciones" rows="3"></textarea>
+    </div>
+
+    <button type="button" class="btn btn-info" onclick="actualizarCompra();">Actualizar</button>
+</form>
+
+<script src="<?php echo BASE_URL; ?>views/js/funtions-compra.js"></script>
+
 <script>
-
-const id_p=<?php $pagina=explode("/", $_GET['views']); echo $pagina['1']; ?>;
-ver_compra(id_p);
+    const id_compra = <?php $pagina = explode("/", $_GET['views']); echo $pagina[1]; ?>;
+    ver_compra(id_compra);
 </script>

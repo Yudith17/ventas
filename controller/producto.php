@@ -8,7 +8,7 @@ $tipo=$_REQUEST['tipo'];
 $objProducto = new ProductoModel();
 $objCategoria = new CategoriaModel();
 $objPersona = new PersonaModel();
-
+$objproveedor = new PersonaModel();
 if ($tipo == "listar") {
 
     $arr_respuesta = array('status'=>false,'contenido'=>'');
@@ -68,21 +68,27 @@ if ($tipo=="registrar") {
 
             $arrProducto = $objProducto->registrarProducto($codigo, $nombre, $detalle, $precio, $stock, $categoria, $imagen, $proveedor, $tipoArchivo);
             if ($arrProducto->id_n > 0) {
-                $newid = $arrProducto->id_n;
-                $arr_Respuesta = array('status' => true, 'mensaje' => 'Registro Exitoso');
+                $arr_Respuesta = array(
+                  'status' => true,
+                  'mensaje' => 'Registro exitoso'
+        );
                 $nombre = $arrProducto->id_n . "." . $tipoArchivo;
-
                 if (move_uploaded_file($archivo, $destino . '' . $nombre)) {
                 } else {
-                    $arr_Respuesta = array('status' => true, 'mensaje' => 'Registro Exitoso, error al subir imagen');
+                  $arr_Respuesta = array('status' => true, 'mensaje' => 'Registro exitoso, error al subir la imagen');
                 }
-            } else {
-                $arr_Respuesta = array('status' => false, 'mensaje' => 'Error al registrar producto');
+              } else {
+                $arr_Respuesta = array(
+                  'status' => false,
+                  'mensaje' => 'Error al registrar producto'
+                );
+              }
+              echo json_encode($arr_Respuesta);
             }
-            echo json_encode($arr_Respuesta);
+          }
         }
-    }
-}
+        
+
 
 if ($tipo== 'obtener') {
     $id = $_GET['id'];

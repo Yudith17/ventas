@@ -19,8 +19,7 @@ class ProductoModel{
         return $arrRespuesta;
     }
 
-    public function obtener_producto_por_id($id)
-    {
+    public function obtener_producto_por_id($id){
         $respuesta = $this->conexion->query("SELECT nombre FROM producto WHERE id = '{$id}'");
         $objeto = $respuesta->fetch_object();
         return $objeto;
@@ -31,6 +30,7 @@ class ProductoModel{
         $sql = $sql->fetch_object();
         return $sql;
     }
+    
 
      public function actualizar_imagen ($id, $imagen){
         $sql = $this->conexion->query("UPDATE producto SET imagen='{$imagen}'WHERE id='{$id}'");
@@ -46,8 +46,7 @@ class ProductoModel{
      }
 
      public function actualizarProducto($id, $nombre, $detalle, $precio, $categoria, $proveedor){
-        $sql = $this->conexion->query("CALL actualizarProducto('{$id}','{$nombre}','
-        {$detalle}','{$precio}','{$categoria}','{$proveedor}')");
+        $sql = $this->conexion->query("CALL actualizarProducto('{$id}','{$nombre}','{$detalle}','{$precio}','{$categoria}','{$proveedor}')");
         $sql = $sql->fetch_object();
         return $sql;
      }

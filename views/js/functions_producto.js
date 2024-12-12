@@ -101,27 +101,23 @@ async function listar_Categorias() {
 
 async function listar_proveedor() {
     try {
-        let respuesta = await fetch(base_url+'controller/Proveedores.php?tipo=listar');
+        let respuesta = await fetch(base_url+'controller/Persona.php?tipo=listar_proveedor');
         json = await respuesta.json();
         if (json.status) {
             let datos = json.contenido;
             let contenido_select = '<option value="">Seleccione</option>';
             datos.forEach(element => {
-                contenido_select += '<option value="' + element.id + '">' + element.razon_social + '</option>';
-                /*$('#categoria').append($('<option />',{
-                    text:${element.nombre},
-                    value:${element.id}
-                }));*/
+                contenido_select += '<option value="'+ element.id +'">'+ element.razon_social + '</option>';
+            
             });
-            document.getElementById('proveedor').innerHTML =
-            contenido_select;
+            document.getElementById('proveedor').innerHTML = contenido_select;
         }
+
         console.log(respuesta);
     } catch (e) {
-        console.log("Error  al cargar categorias " + e);
+        console.log("Error al cargar Proveedor " + e);
     }
 }
-
 async function ver_producto(id){
     const formData = new FormData();
     formData.append ('id_producto', id);
@@ -183,7 +179,7 @@ async function actualizarProducto() {
         console.log(json); // Muestra la respuesta del servidor
         
     } catch (e) {
-        console.error("Error al actualizar el producto:"+ e);
+        console.error("Error al actualizar el producto:", e);
     }
 }
 
