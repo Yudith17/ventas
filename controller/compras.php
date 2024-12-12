@@ -1,51 +1,48 @@
 <?php 
 require_once('../model/compraModel.php');
-require_once('../model/productoModel.php');
 require_once('../model/personaModel.php');
-$tipo = $_REQUEST['tipo'];
+require_once('../model/productoModel.php');
 
-// Instancio las clases
-$objCompra = new CompraModel();  // Modelo de compras
+$tipo  = $_REQUEST['tipo'];
+//instancio la clase  productoModel
+
+$objCompra = new CompraModel();
 $objProducto = new ProductoModel();
 $objPersona = new PersonaModel();
 
 if ($tipo == "listar") {
+    $arr_Respuesta = array('status' => false, 'contenido' => '');
+    $arrCompra = $objCompra->obtener_compra();
 
-    $arr_respuesta = array('status' => false, 'contenido' => '');
-    $arr_compra = $objCompra->obtener_compra();  // Obtenemos todas las compras
+    if (!empty($arrCompra)) {
+        for ($i = 0; $i < count($arrCompra); $i++) {
+            $id_compra = $arrCompra[$i]->id;
+            $id_producto = $arrCompra[$i]->id_producto;
+            $cantidad = $arrCompra[$i]->cantidad;
+            $precio = $arrCompra[$i]->precio;
+            $id_trabajador = $arrCompra[$i]->id_trabajador;
 
-    if (!empty($arr_compra)) {
-        for ($i = 0; $i < count($arr_compra); $i++) {
+            $id_producto = $arrCompra[$i]->id_producto;
+            $r_producto = $objProducto->obtener_producto_id($id_producto);
+            $arrCompra[$i]->producto=$r_producto;
+
+            $id_trabajador = $arrCompra[$i]->id_trabajador;
+            $r_trabajador = $objPersona->obtener_trabajador_id($id_trabajador);
+            $arrCompra[$i]->trabajador=$r_trabajador;
+
+            $opciones = '
+            <a href="'.BASE_URL.'editar-compra/'.$id_compra.'"><i class="fas fa-edit btn btn-success btn-sm"></i></a>
+                 <button onclick="eliminar_compra('.$id_compra.');"class="btn btn-warning btn-sm"><i class="fas fa-trash-alt"></i></button>
+                 ';
+            $arrCompra[$i]->options = $opciones;
             
-            // Relacionar el producto con la compra
-            $id_producto = $arr_compra[$i]->id_producto;
-            $r_producto = $objProducto->obtener_producto_por_id($id_producto);  // Obtenemos la información del producto
-            $arr_compra[$i]->producto = $r_producto;  // Añadimos el producto a la compra
-
-            // Relacionar el trabajador con la compra
-            $id_trabajador = $arr_compra[$i]->id_trabajador;
-            $r_trabajador = $objPersona->obtener_Trabajador_por_id($id_trabajador);  // Obtenemos la información del trabajador
-            $arr_compra[$i]->trabajador = $r_trabajador;  // Añadimos el trabajador a la compra
-
-            // Información adicional de la compra
-            $id_compra = $arr_compra[$i]->id;
-            $compra = $arr_compra[$i]->producto;
-           
-
-            // No he añadido más, pero podrías incluir botones de acción si es necesario
-            //localhost/editar-producto/4                                                               //eliminar_producto(va llamar al id);
-            $opciones ='<a href=" '.BASE_URL.'editar-compra/'.$id_compra.'">Editar</a><button onclick="Eliminar_compra('.$id_compra.');">Eliminar</button>';
-            $arr_compra[$i]->options = $opciones; // Este campo puedes rellenarlo con los botones de "Editar" o "Eliminar"
         }
-        
-        // Respuesta exitosa
-        $arr_respuesta['status'] = true;
-        $arr_respuesta['contenido'] = $arr_compra;
+            $arr_Respuesta['status'] = true;
+            $arr_Respuesta['contenido'] =  $arrCompra;
     }
-
-    // Respondemos con los datos en formato JSON
-    echo json_encode($arr_respuesta);
+    echo json_encode($arr_Respuesta); //convertir en formato -- 
 }
+
 
 
 

@@ -35,7 +35,7 @@ class CompraModel {
 
     public function obtener_compra(){
         $arrRespuesta = array();
-        $respuesta = $this->conexion->query("SELECT id_categoria, id_producto, cantidad, precio, id_trabajador
+        $respuesta = $this->conexion->query("SELECT id, id_producto, cantidad, precio, id_trabajador
 FROM compras");
         while($objeto = $respuesta->fetch_object()) {
             array_push($arrRespuesta, $objeto);
@@ -54,14 +54,14 @@ FROM compras");
     }
 
    
-    public function listarCompras() {
+    /*public function listarCompras() {
         $result = $this->conexion->query("SELECT * FROM compras");
         $compras = [];
         while ($row = $result->fetch_assoc()) {
             $compras[] = $row;
         }
         return $compras;
-    }
+    }*/
 
    
     

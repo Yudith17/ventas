@@ -1,42 +1,34 @@
 async function listar_compras() {
     try {
-        // Realiza la solicitud fetch para obtener las compras
-        let respuesta = await fetch(base_url + 'controller/compras.php?tipo=listar');
+        let respuesta = await fetch(base_url+'controller/compras.php?tipo=listar');
         let json = await respuesta.json();
-
         if (json.status) {
             let datos = json.contenido;
             let cont = 0;
-            
-            // Itera sobre los datos de las compras obtenidas
-            datos.forEach(item => {
+            datos.forEach(item=>{
                 let nueva_fila = document.createElement("tr");
-                nueva_fila.id = "fila" + item.id;
-
-                // Asume que cada compra tiene un id, producto, cantidad, precio y trabajador
-                cont++;
-
+                nueva_fila.id = "fila"+item.id; // id anuevo asignado-------------id de la BD
+                cont+=1;
                 nueva_fila.innerHTML = `
-                    <th>${cont}</th>
-                    <td>${item.producto.nombre}</td> <!-- Producto nombre -->
-                    <td>${item.cantidad}</td> <!-- Cantidad de la compra -->
-                    <td>${item.precio}</td> <!-- Precio de la compra -->
-                    <td>${item.trabajador.razon_social}</td> <!-- Trabajador que realizó la compra -->
-                     <td>${item.options}</td> <!-- Acciones: Editar y Eliminar -->
-                `;
-
-                // Añadir la fila de datos a la tabla
-                document.querySelector('#tbl_compra').appendChild(nueva_fila);
+                <th>${cont}</th> 
+                <td>${item.producto.nombre}</td>
+                <td>${item.cantidad}</td>
+                <td>${item.precio}</td>
+                <td>${item.trabajador.razon_social}</td>
+                <td>${item.options}</td>
+        `;
+        document.querySelector('#tbl_compra').appendChild(nueva_fila);
             });
-
+        }else{
+            Swal.fire("No se encontraron compras.");
         }
-
         console.log(json);
     } catch (error) {
-        console.log("Oops, salió un error "+error);
+        console.log("Oops salio un error "+error);
     }
+
 }
-// Verificar si la tabla de compras existe y cargar los datos
+
 if (document.querySelector('#tbl_compra')) {
     listar_compras();
 }

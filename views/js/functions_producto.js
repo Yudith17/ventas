@@ -183,7 +183,7 @@ async function actualizarProducto() {
         console.log(json); // Muestra la respuesta del servidor
         
     } catch (e) {
-        console.error("Error al actualizar el producto:", e);
+        console.error("Error al actualizar el producto:"+ e);
     }
 }
 
