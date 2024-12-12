@@ -17,7 +17,7 @@ $arrResponse = array('status'=> false,'msg'=>'');
 
   }else{
     if (password_verify($password, $arrPersona->password)) {
-        /* session_start(); */
+        session_start();
             $_SESSION['sesion_d_ventas_id'] = $arrPersona->id;
             $_SESSION['sesion_d_ventas_ni'] = $arrPersona->nro_identidad;
             $_SESSION['sesion_d_ventas_name'] = $arrPersona->razon_social;
