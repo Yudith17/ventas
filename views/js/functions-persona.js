@@ -1,6 +1,6 @@
 async function listar_personas() {
     try {
-        let respuesta = await fetch(base_url + 'controller/Persona.php?tipo=listar');
+        let respuesta = await fetch(base_url + 'controller/persona.php?tipo=listar');
         let json = await respuesta.json();
 
         if (json.status) {
@@ -70,7 +70,7 @@ async function registrarPersona() {
         //capturamos datos del formulario nuevapersona.php
         const datos = new FormData(frmRegistrarPersona);
         //enviamos datos hacia el controlador
-        let respuesta = await fetch(base_url + 'controller/Persona.php?tipo=registrar', {
+        let respuesta = await fetch(base_url + 'controller/persona.php?tipo=registrar', {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
@@ -94,7 +94,7 @@ async function ver_persona(id){
     const formData = new FormData();
     formData.append('id_persona', id);
     try {
-        let respuesta = await fetch(base_url+'controller/Persona.php?tipo=ver',{
+        let respuesta = await fetch(base_url+'controller/persona.php?tipo=ver',{
             method: 'POST',
             mode: 'cors',
             cache:'no-cache',
@@ -134,7 +134,7 @@ async function actualizarPersona() {
     const datos = new FormData(frmActualizar);
     
     try {
-        let respuesta = await fetch(base_url + 'controller/Persona.php?tipo=actualizar', {
+        let respuesta = await fetch(base_url + 'controller/persona.php?tipo=actualizar', {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
@@ -173,7 +173,7 @@ async function fnt_eliminar_persona(id) {
     formData.append('id_persona', id);
     
     try {
-        let respuesta = await fetch(base_url + 'controller/Persona.php?tipo=eliminar', {
+        let respuesta = await fetch(base_url + 'controller/persona.php?tipo=eliminar', {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
