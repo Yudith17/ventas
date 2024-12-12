@@ -9,7 +9,7 @@ async function listar_categorias() {
             datos.forEach(item => {
                 let nueva_fila = document.createElement("tr");
                 nueva_fila.id = "fila" + item.id;
-                cont++;
+                cont+=1
                 nueva_fila.innerHTML = `
                     <th>${cont}</th>
                     <td>${item.nombre}</td>

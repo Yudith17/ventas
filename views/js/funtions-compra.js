@@ -1,36 +1,35 @@
 async function listar_compras() {
     try {
-        let respuesta = await fetch(base_url + 'controller/Compras.php?tipo=listar');
+        let respuesta = await fetch(base_url + 'controller/compras.php?tipo=listar');
         let json = await respuesta.json();
 
         if (json.status) {
-
             let datos = json.contenido;
             let cont = 0;
             // Agregar filas a la tabla
             datos.forEach(item => {
                 let nueva_fila = document.createElement("tr");
                 nueva_fila.id = "fila" + item.id;
-                cont+=1
+                cont ++;
                 nueva_fila.innerHTML = `
-                 
                         <th>${cont}</th>
-                         <td>${item.producto.nombre}</td>
+                        <td>${item.producto.nombre}</td>
                         <td>${item.cantidad}</td>
                         <td>${item.precio}</td>
-                        <td>${item.trabajador.razon_social}</td>
+                        <td>${item.persona.razon_social}</td>
                         <td>${item.options}</td>
                 `;
-                document.querySelector("#tbl_compra")
-                .appendChild(nueva_fila);
-                
+                document.querySelector("#tbl_compra").appendChild(nueva_fila);
             });
-        };
+        } else {
+            console.error("Error en la respuesta: ", json);
+        }
         console.log(json);
     } catch (error) {
-        console.error("Error a la hora de listar productos" + error);
+        console.error("Error a la hora de listar productos: " + error);
     }
 }
+
 if (document.querySelector('#tbl_compra')) {
     listar_compras();
 }

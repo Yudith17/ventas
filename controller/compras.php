@@ -27,11 +27,12 @@ if ($tipo == "listar") {
           // Obtener trabajador
           $id_trabajador = $arr_Compra[$i]->id_trabajador;
           $r_trabajador = $objPersona->obtener_trabajador_por_id($id_trabajador);
-          $arr_Compra[$i]->trabajador = $r_trabajador;
+          $arr_Compra[$i]->persona = $r_trabajador;
  
           $id_Compras = $arr_Compra[$i]->id;
          
-          $opciones ='<a href=" '.BASE_URL.'editar-compra/'.$id_Compras.'">Editar</a><button onclick="Eliminar_compra('.$id_Compras.');">Eliminar</button>';
+          $opciones ='<a href="'.BASE_URL.'editar-compra/'.$id_Compras.'">Editar</a>
+                    <button onclick="Eliminar_compra('.$id_Compras.');">Eliminar</button>';
             $arr_Compra[$i]->options = $opciones;
        }
        $arr_Respuesta['status'] = true;

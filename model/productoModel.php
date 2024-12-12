@@ -20,7 +20,7 @@ class ProductoModel{
     }
 
     public function obtener_producto_por_id($id){
-        $respuesta = $this->conexion->query("SELECT nombre FROM producto WHERE id = '{$id}'");
+        $respuesta = $this->conexion->query("SELECT */* nombre  */FROM producto WHERE id = '{$id}'");
         $objeto = $respuesta->fetch_object();
         return $objeto;
     }

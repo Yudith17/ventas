@@ -35,8 +35,7 @@ class CompraModel {
 
     public function obtener_compra(){
         $arrRespuesta = array();
-        $respuesta = $this->conexion->query("SELECT id, id_producto, cantidad, precio, id_trabajador
-FROM compras");
+        $respuesta = $this->conexion->query("SELECT * FROM compras");
         while($objeto = $respuesta->fetch_object()) {
             array_push($arrRespuesta, $objeto);
     

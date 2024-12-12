@@ -11,7 +11,7 @@
 
             </tr>
         </thead>
-        <tbody id="tbl_compra">
+        <tbody id ="tbl_compra">
             <!-- Las filas de la tabla se agregarán aquí dinámicamente -->
         </tbody>
     </table>

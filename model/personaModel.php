@@ -90,7 +90,7 @@ class PersonaModel
     }
     public function obtener_trabajador_por_id($id)
 {
-    $respuesta = $this->conexion->query("SELECT razon_social FROM persona WHERE id = '{$id}'");
+    $respuesta = $this->conexion->query("SELECT * /* razon_social */ FROM persona WHERE id = '{$id}'");
     return $respuesta->fetch_object();
 }
 public function verPersona($id){
