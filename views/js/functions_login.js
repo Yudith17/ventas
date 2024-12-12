@@ -18,7 +18,7 @@ try {
     json = await respuesta.json();
     if(json.status){
         //swal("Iniciar Sesion", json.mensaje,"success");
-        location.replace(base_url+"nuevo_producto");
+        location.replace(base_url+"nuevo-producto");
     }else{
         swal("Iniciar Sesion", json.mensaje,"error");
     }
