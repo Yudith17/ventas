@@ -31,7 +31,7 @@ if ($tipo == "listar") {
  
           $id_Compras = $arr_Compra[$i]->id;
          
-          $opciones = '<a href="'.BASE_URL.'editar-compra/'.$idCompra.'"><i class="fas fa-edit"></i>Editar</a>    <button onclick="eliminar_compra('.$idCompra.');">Eliminar</button>';
+          $opciones = '<a href="'.BASE_URL.'editar-compra/'.$id_Compras.'"><i class="fas fa-edit"></i>Editar</a>    <button onclick="eliminar_compra('.$id_Compras.');">Eliminar</button>';
             $arr_Compra[$i]->options = $opciones;
        }
        $arr_Respuesta['status'] = true;
@@ -67,10 +67,7 @@ if ($tipo == "registrar") {
     }
 }
 
-if ($tipo == "listar") {
-    $compras = $objCompra->listarCompras();
-    echo json_encode($compras);
-}
+
 
 if ($tipo == "ver") {
     // Verifica si se ha recibido el ID de la compra
